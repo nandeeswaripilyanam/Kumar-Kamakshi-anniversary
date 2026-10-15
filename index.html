@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Dearest Akka & Bava</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold: #ffd58a;
+  --rose: #f6c0c8;
+  --dark: #160307;
+}
+
+body {
+  min-height: 100vh;
+  overflow: hidden;
+  color: #fff0e9;
+  background:
+    radial-gradient(ellipse at 25% 45%, #57101b 0%, transparent 48%),
+    radial-gradient(ellipse at 80% 30%, #360712 0%, transparent 45%),
+    linear-gradient(120deg, #100206, #30050e 55%, #100206);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.scene {
+  min-height: 100vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 5vw 70px;
+  isolation: isolate;
+}
+
+#stars {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.topline {
+  position: absolute;
+  top: 34px;
+  width: 100%;
+  padding: 0 12px;
+  text-align: center;
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 4px;
+}
+
+.topline::after {
+  content: "────── ♡ ──────";
+  display: block;
+  margin-top: 17px;
+  color: #dca85b;
+  letter-spacing: 3px;
+}
+
+.layout {
+  width: min(1120px, 100%);
+  display: grid;
+  grid-template-columns: 0.95fr 1.35fr;
+  align-items: center;
+  gap: 15px;
+  padding-left: 20px;
+  animation: appear 1.8s ease both;
+}
+
+.heart-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+}
+
+.double-heart {
+  width: min(100%, 350px);
+  max-width: 100%;
+  overflow: visible;
+  filter: drop-shadow(0 0 18px #ff9b32);
+  animation: heartGlow 3.5s ease-in-out infinite;
+}
+
+.heart-line {
+  fill: none;
+  stroke: url(#gold);
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawHeart 3.4s ease forwards;
+}
+
+.heart-inner {
+  animation-delay: 1.3s;
+  stroke-width: 2.5;
+}
+
+.copy {
+  text-align: left;
+  transform: translateX(0);
+}
+
+.kicker {
+  font-size: clamp(27px, 4vw, 45px);
+  font-style: italic;
+  color: var(--rose);
+  margin-bottom: 8px;
+}
+
+h1 {
+  color: #f9d4d4;
+  font-size: clamp(39px, 5.3vw, 69px);
+  font-weight: normal;
+  line-height: 1.12;
+}
+
+.names {
+  margin-top: 18px;
+  font-size: clamp(25px, 3.8vw, 45px);
+  font-style: italic;
+  color: var(--gold);
+}
+
+.rule {
+  width: 230px;
+  max-width: 80%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 24px 0;
+}
+
+.tagline {
+  font-size: clamp(15px, 2vw, 21px);
+  letter-spacing: 1px;
+  line-height: 1.7;
+}
+.movie-line {
+  margin-top: 8px;
+  color: #ffd58a;
+  font-size: clamp(15px, 2vw, 21px);
+  font-style: italic;
+  line-height: 1.7;
+  text-shadow: 0 0 10px #ffba4640;
+}
+
+.dedication {
+  margin-top: 12px;
+  color: #e9bdbe;
+  font-style: italic;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.enter {
+  display: inline-block;
+  position: relative;
+  margin-top: 34px;
+  padding: 15px 27px;
+  border: 1px solid #e8b75f;
+  border-radius: 3px;
+  color: #ffe5af;
+  text-decoration: none;
+  font-size: 14px;
+  letter-spacing: 1px;
+  background: linear-gradient(110deg, #4a160e, #21060a, #4a160e);
+  box-shadow: 0 0 14px #c77b2730, inset 0 0 10px #e9ad3620;
+  transition: 0.35s ease;
+}
+
+.enter:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 28px #ffc56880;
+  background: #642018;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 23px;
+  width: 100%;
+  text-align: center;
+  color: #bd8790;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes heartGlow {
+  0%, 100% { filter: drop-shadow(0 0 8px #ff9b32); }
+  50% { filter: drop-shadow(0 0 23px #ffbc54); }
+}
+
+@keyframes drawHeart {
+  to { stroke-dashoffset: 0; }
+}
+
+@media (max-width: 700px) {
+  body { overflow: auto; }
+
+  .scene {
+    min-height: 100svh;
+    padding: 105px 22px 65px;
+  }
+
+  .topline {
+    font-size: 9px;
+    letter-spacing: 2px;
+    top: 25px;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .double-heart { width: min(72vw, 280px); }
+
+  .copy { text-align: center; }
+  .kicker { font-size: 30px; }
+  h1 { font-size: clamp(38px, 10vw, 52px); }
+  .names { font-size: 31px; }
+  .rule { margin: 18px auto; }
+  .tagline { font-size: 15px; }
+  .enter { margin-top: 22px; }
+  .bottom { font-size: 8px; letter-spacing: 2px; }
+}
+#musicbtn {
+    background: linear-gradient(135deg, #d4af37, #f8e7a1);
+    color: #3b0715;
+    border: 1px solid #f8e7a1;
+    border-radius: 30px;
+    padding: 12px 24px;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+</style>
+</head>
+
+<body>
+    <audio id="backgroundMusic" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+  Your browser does not support audio playback.
+</audio>
+<button id="musicbtn" onclick="toggleMusic()">🎵 </button>
+  <main class="scene">
+  <canvas id="stars"></canvas>
+
+  <header class="topline">
+    A STORY MADE OF LOVE • MEMORIES • FOREVER
+  </header>
+
+  <section class="layout">
+    <div class="heart-area">
+      <svg class="double-heart" viewBox="0 0 360 330"
+           xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#fff0b0"/>
+            <stop offset="35%" stop-color="#ffba46"/>
+            <stop offset="65%" stop-color="#e88119"/>
+            <stop offset="100%" stop-color="#fff0a1"/>
+          </linearGradient>
+        </defs>
+
+        <path class="heart-line"
+          d="M180 288
+             C147 254 34 178 34 100
+             C34 19 130 13 180 82
+             C230 13 326 19 326 100
+             C326 178 213 254 180 288Z"/>
+
+        <path class="heart-line heart-inner"
+          d="M180 226
+             C159 204 91 160 91 119
+             C91 77 141 75 180 113
+             C219 75 269 77 269 119
+             C269 160 201 204 180 226Z"/>
+
+        <g fill="#ffe9a1">
+          <circle cx="48" cy="108" r="2.5"/>
+          <circle cx="83" cy="49" r="2"/>
+          <circle cx="139" cy="55" r="2.5"/>
+          <circle cx="177" cy="81" r="3"/>
+          <circle cx="221" cy="52" r="2"/>
+          <circle cx="279" cy="55" r="2.5"/>
+          <circle cx="311" cy="113" r="2"/>
+          <circle cx="67" cy="170" r="2"/>
+          <circle cx="121" cy="222" r="2.5"/>
+          <circle cx="180" cy="287" r="3"/>
+          <circle cx="240" cy="222" r="2.5"/>
+          <circle cx="295" cy="168" r="2"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="copy">
+      <p class="kicker">My Dearest</p>
+      <h1>Akka ♡ Bava</h1>
+      <p class="names">Kumar &amp; Kamakshi</p>
+      <div class="rule"></div>
+
+      <p class="tagline">Two hearts. One beautiful forever.</p>
+      <p class="movie-line">A love story that deserves its own movie.</p>
+      <p class="dedication">
+        A little cinematic gift, from Nandhu with love.
+      </p>
+
+      <a class="enter" href="page2.html">
+        ♡ Enter Their Forever ♡
+      </a>
+    </div>
+  </section>
+
+  <footer class="bottom">
+    MADE WITH LOVE • FROM NANDHU
+  </footer>
+</main>
+
+<script>
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
+let particles = [];
+
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const count = Math.min(
+    220,
+    Math.floor(canvas.width * canvas.height / 4500)
+  );
+
+  particles = Array.from({ length: count }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2 + 0.4,
+    speed: Math.random() * 0.5 + 0.1,
+    alpha: Math.random() * 0.8 + 0.2,
+    phase: Math.random() * Math.PI * 2
+  }));
+}
+
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  particles.forEach(p => {
+    p.phase += 0.025;
+    p.y -= p.speed;
+
+    if (p.y < -5) {
+      p.y = canvas.height + 5;
+      p.x = Math.random() * canvas.width;
+    }
+
+    const opacity = p.alpha * (0.65 + Math.sin(p.phase) * 0.35);
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(255, 190, 83, ${opacity})`;
+    ctx.shadowBlur = 8;
+    ctx.shadowColor = "#ffac38";
+    ctx.fill();
+  });
+
+  ctx.shadowBlur = 0;
+  requestAnimationFrame(animate);
+}
+
+window.addEventListener("resize", resize);
+resize();
+animate();
+</script>
+<script>
+const music = document.getElementById("backgroundMusic");
+const savedTime = Number(localStorage.getItem("musicTime") || 0);
+
+music.addEventListener("loadedmetadata", () => {
+  if (savedTime < music.duration) music.currentTime = savedTime;
+  music.play().catch(() => {
+    // Autoplay with sound may require the visitor to press Play.
+  });
+});
+
+music.addEventListener("timeupdate", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+</script>
+<script>
+const Music = document.getElementById("anniversaryMusic");
+const button = document.getElementById("musicBtn");
+
+function toggleMusic() {
+    if (music.paused) {
+        music.play();
+        button.textContent = "🔊 Pause Music";
+    } else {
+        music.pause();
+        button.textContent = "🎵 Play Music";
+    }
+}
+</script>
+</body>
+</html>

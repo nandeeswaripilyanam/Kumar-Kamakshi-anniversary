@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Beautiful Memories | Kumar & Kamakshi</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background:
+                radial-gradient(ellipse at top, #54212f 0%, transparent 55%),
+                linear-gradient(135deg, #10080e, #260d19, #10080e);
+            color: #fff1e8;
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .sparkles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #ffe6a6;
+            border-radius: 50%;
+            box-shadow: 0 0 9px #e8b86d;
+            animation: twinkle 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.15;
+                transform: scale(0.6);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        header {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 75px 20px 45px;
+        }
+
+        .eyebrow {
+            color: #e6bd86;
+            letter-spacing: 5px;
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(43px, 8vw, 76px);
+            font-weight: 500;
+            line-height: 1.1;
+            color: #f6d8bd;
+            text-shadow: 0 0 25px #b66b6655;
+        }
+
+        .subtitle {
+            max-width: 480px;
+            margin: 18px auto 0;
+            color: #d9bfc5;
+            font-size: 13px;
+            line-height: 1.9;
+            font-weight: 300;
+        }
+
+        .ornament {
+            color: #d9ac70;
+            margin-top: 23px;
+            letter-spacing: 9px;
+            font-size: 18px;
+        }
+
+        .gallery {
+            position: relative;
+            z-index: 1;
+            width: min(1100px, 90%);
+            margin: 0 auto 70px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 38px 24px;
+        }
+
+        .memory {
+            opacity: 0;
+            transform: translateY(25px);
+            animation: appear 0.8s ease forwards;
+        }
+
+        .memory:nth-child(2) { animation-delay: 0.12s; }
+        .memory:nth-child(3) { animation-delay: 0.24s; }
+        .memory:nth-child(4) { animation-delay: 0.36s; }
+        .memory:nth-child(5) { animation-delay: 0.48s; }
+        .memory:nth-child(6) { animation-delay: 0.60s; }
+        .memory:nth-child(7) { animation-delay: 0.72s; }
+        .memory:nth-child(8) { animation-delay: 0.84s; }
+        .memory:nth-child(9) { animation-delay: 0.96s; }
+
+        @keyframes appear {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .photo-frame {
+            position: relative;
+            padding: 7px;
+            border: 1px solid #b98b61;
+            border-radius: 160px 160px 12px 12px;
+            background: linear-gradient(145deg, #6b3b43, #24121c);
+            box-shadow: 0 10px 35px #00000045;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .memory:hover .photo-frame {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 35px #d5a46c33;
+        }
+
+        .photo-frame img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 155px 155px 8px 8px;
+            background: #301823;
+            transform: scale(1.08);
+        }
+        .memory:nth-child(1) .photo-frame img {
+    object-position: 55% center;
+}
+        .memory:nth-child(5) .photo-frame img {
+    object-position: 35% center;
+}
+
+.memory:nth-child(6) .photo-frame img {
+    object-position: 75% center;
+}
+
+.memory:nth-child(9) .photo-frame img {
+    object-position: 35% center;
+}
+
+        .photo-number {
+            color: #e6bd86;
+            font-size: 10px;
+            letter-spacing: 3px;
+            margin: 18px 0 8px;
+        }
+
+        .quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(20px, 2.4vw, 27px);
+            line-height: 1.3;
+            color: #f5d9c4;
+        }
+
+        .caption {
+            margin-top: 9px;
+            font-size: 11px;
+            line-height: 1.8;
+            color: #c6aeb7;
+            font-weight: 300;
+        }
+
+        .closing {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 25px 20px 75px;
+        }
+
+        .heart {
+            font-size: 39px;
+            color: #e9b8a9;
+            text-shadow: 0 0 25px #d991a0;
+            animation: heartbeat 2s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+
+        .closing h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(30px, 5vw, 48px);
+            font-weight: 500;
+            color: #f5d8be;
+            margin: 18px 0 12px;
+        }
+
+        .closing p {
+            color: #d8bac5;
+            font-size: 13px;
+            line-height: 2;
+        }
+
+        .signature {
+            color: #e8bd83 !important;
+            margin-top: 15px;
+        }
+
+        .next-button {
+            display: inline-block;
+            margin-top: 28px;
+            padding: 13px 25px;
+            border: 1px solid #c69a70;
+            border-radius: 40px;
+            color: #f7dfc9;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .next-button:hover {
+            background: #c69a70;
+            color: #190d13;
+            box-shadow: 0 0 25px #c69a7055;
+        }
+
+        footer {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 0 15px 25px;
+            color: #9f818d;
+            font-size: 10px;
+            letter-spacing: 2px;
+        }
+
+        @media (max-width: 760px) {
+            .gallery {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 30px 15px;
+            }
+
+            header {
+                padding-top: 55px;
+            }
+
+            .eyebrow {
+                letter-spacing: 3px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .gallery {
+                width: 92%;
+                gap: 26px 12px;
+            }
+
+            .photo-frame {
+                padding: 5px;
+            }
+
+            .quote {
+                font-size: 21px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+        .family-highlight {
+    position: relative;
+    z-index: 1;
+    max-width: 760px;
+    margin: 0 auto 75px;
+    padding: 35px 22px;
+    text-align: center;
+    animation: familyReveal 1.2s ease both;
+}
+
+.family-label {
+    color: #e6bd86;
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 12px;
+}
+
+.family-highlight h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(34px, 6vw, 52px);
+    font-weight: 500;
+    color: #f6d8bd;
+    margin-bottom: 28px;
+}
+
+.family-frame {
+    position: relative;
+    width: 100%;
+    max-width: 620px;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    margin: auto;
+    padding: 9px;
+    border: 1px solid #e2b779;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #e7c38e, #61313e, #e7c38e);
+    box-shadow:
+        0 0 18px #d9aa7040,
+        0 0 45px #d9aa7020;
+}
+
+.family-frame img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(1.40);
+    border-radius: 9px;
+
+}
+
+.family-heart {
+    position: absolute;
+    right: -13px;
+    bottom: -18px;
+    color: #f6d8bd;
+    font-size: 38px;
+    text-shadow: 0 0 15px #e6bd86;
+    animation: familyBeat 2s ease-in-out infinite;
+}
+
+.family-quote {
+    max-width: 550px;
+    margin: 28px auto 0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 4vw, 30px);
+    line-height: 1.6;
+    color: #f4d7c5;
+}
+
+.family-signature {
+    margin-top: 15px;
+    color: #dcb47e;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+@keyframes familyReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes familyBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .family-highlight,
+    .family-heart {
+        animation: none;
+    }
+}
+    </style>
+    
+</head>
+
+<body>
+    <audio id="backgroundMusic" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+  Your browser does not support audio playback.
+</audio>
+    <div class="sparkles" id="sparkles"></div>
+
+    <header>
+        <p class="eyebrow">02 · A Collection of Forever</p>
+
+        <h1>Our Beautiful<br>Memories</h1>
+
+        <p class="subtitle">
+            Every photograph holds a moment.<br>
+            Every moment holds a little piece of your love.
+        </p>
+
+        <div class="ornament">✧ ♡ ✧</div>
+    </header>
+
+    <main class="gallery">
+
+        <!-- PHOTO 1 -->
+        <article class="memory">
+            <div class="photo-frame">
+                <img src="bridge.jpeg" alt="Kumar and Kamakshi together"
+                     loading="lazy">
+            </div>
+            <p class="photo-number">MEMORY · 01</p>
+            <h2 class="quote">"With you, every road feels beautiful."</h2>
+            <p class="caption">Two hearts, creating a lifetime of memories.</p>
+        </article>
+
+        <!-- PHOTO 2 -->
+        <article class="memory">
+            <div class="photo-frame">
+                <img src="get together.jpeg" alt="A beautiful moment together"
+                     loading="lazy">
+            </div>
+            <p class="photo-number">MEMORY · 02</p>
+            <h2 class="quote">"The best moments are the ones we share."</h2>
+            <p class="caption">Little moments that become precious memories.</p>
+        </article>
+
+        <!-- PHOTO 3 -->
+        <article class="memory">
+            <div class="photo-frame">
+                <img src="jilakara bellam.jpeg" alt="A special wedding memory"
+                     loading="lazy">
+            </div>
+            <p class="photo-number">MEMORY · 03</p>
+            <h2 class="quote">"One promise, a thousand tomorrows."</h2>
+            <p class="caption">A beautiful beginning to forever.</p>
+        </article>
+
+        <!-- PHOTO 4 -->
+        <article class="memory">
+            <div class="photo-frame">
+                <img src="pink dress.jpeg" alt="Kumar and Kamakshi in a lovely moment"
+                     loading="lazy">
+            </div>
+            <p class="photo-number">MEMORY · 04</p>
+            <h2 class="quote">"Love makes ordinary days extraordinary."</h2>
+            <p class="caption">May your smiles always find each other.</p>
+        </article>
+
+        <!-- PHOTO 5 -->
+        <article class="memory">
+            <div class="photo-frame">
+                <img src="red sari sit.jpeg" alt="A cherished couple memory"
+                     loading="lazy">
+            </div>
+            <p class="photo-number">MEMORY · 05</p>
+            <h2 class="quote">"Home is not a place; it is each other."</h2>
+            <p class="caption">A love that feels like home.</p>
+        </article>
+
+        <!-- PHOTO 6 -->
+        <article class="memory">
+            <div class="photo-frame">
+                <img src="red sari.jpeg" alt="A beautiful memory of the couple"
+                     loading="lazy">
+            </div>
+            <p class="photo-number">MEMORY · 06</p>
+            <h2 class="quote">"May you always be each other's favourite."</h2>
+            <p class="caption">Today, tomorrow, and all the years ahead.</p>
+        </article>
+
+        <!-- PHOTO 7 -->
+        <article class="memory">
+            <div class="photo-frame">
+                <img src="red shirt.jpeg" alt="A sweet couple memory"
+                     loading="lazy">
+            </div>
+            <p class="photo-number">MEMORY · 07</p>
+            <h2 class="quote">"Growing together is the most beautiful journey."</h2>
+            <p class="caption">One team, one heart, one forever.</p>
+        </article>
+
+        <!-- PHOTO 8 -->
+        <article class="memory">
+            <div class="photo-frame">
+                <img src="selfie.jpeg" alt="A happy selfie of the couple"
+                     loading="lazy">
+            </div>
+            <p class="photo-number">MEMORY · 08</p>
+            <h2 class="quote">"May laughter always live in your love."</h2>
+            <p class="caption">Keep collecting reasons to smile together.</p>
+        </article>
+
+        <!-- PHOTO 9 -->
+        <article class="memory">
+            <div class="photo-frame">
+                <img src="white frock.jpeg" alt="A precious moment together"
+                     loading="lazy">
+            </div>
+            <p class="photo-number">MEMORY · 09</p>
+            <h2 class="quote">"The most beautiful story is still being written."</h2>
+            <p class="caption">Your forever is only getting started.</p>
+        </article>
+
+    </main>
+    <section class="family-highlight">
+       <p class="family-label">A LOVE THAT BECOMES FAMILY</p>
+
+       <h2>Our Greatest Blessing ♡</h2>
+
+       <div class="family-frame">
+         <img src="family.jpeg"
+             alt="Kumar, Kamakshi and their little one together">
+          <span class="family-heart">♡</span>
+       </div>
+
+      <p class="family-quote">
+        "A beautiful family, a little bundle of joy,
+        and a lifetime of love. The most precious memories
+        are the ones we share together." ❤️
+      </p>
+
+      <p class="family-signature">Together is our favourite place.</p>
+    </section>
+
+    <section class="closing">
+        <div class="heart">♡</div>
+
+        <h2>To a Love That Lasts Forever</h2>
+
+        <p>
+            Happy 2nd Wedding Anniversary,<br>
+            <strong>My Dearest Akka &amp; Bava!</strong><br>
+            May your love grow more beautiful every year.
+        </p>
+
+        <p class="signature">With all my love, Your Nandhu ♡</p>
+
+        <!-- Change page6.html only if your previous page uses a different filename -->
+        <a href="page6.html" class="next-button">
+            Continue to Our Love Quiz ♡
+        </a>
+    </section>
+
+    <footer>
+        MADE WITH LOVE · FOR KUMAR &amp; KAMAKSHI
+    </footer>
+
+    <script>
+        // Lightweight golden sparkles
+        const sparkleArea = document.getElementById("sparkles");
+
+        for (let i = 0; i < 35; i++) {
+            const sparkle = document.createElement("span");
+            sparkle.className = "sparkle";
+
+            sparkle.style.left = Math.random() * 100 + "%";
+            sparkle.style.top = Math.random() * 100 + "%";
+            sparkle.style.animationDelay = Math.random() * 3 + "s";
+            sparkle.style.animationDuration =
+                (2 + Math.random() * 3) + "s";
+
+            sparkleArea.appendChild(sparkle);
+        }
+    </script>
+<script>
+const music = document.getElementById("backgroundMusic");
+const savedTime = Number(localStorage.getItem("musicTime") || 0);
+
+music.addEventListener("loadedmetadata", () => {
+  if (savedTime < music.duration) music.currentTime = savedTime;
+  music.play().catch(() => {
+    // Autoplay with sound may require the visitor to press Play.
+  });
+});
+
+music.addEventListener("timeupdate", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+</script>
+</body>
+</html>

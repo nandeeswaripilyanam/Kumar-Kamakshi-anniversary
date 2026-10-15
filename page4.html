@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>A Letter from Nandhu ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+    background: #090309;
+}
+
+body {
+    position: relative;
+    isolation: isolate;
+    min-height: 100vh;
+    padding: 35px 18px;
+    overflow-x: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(140, 35, 70, 0.45),
+            transparent 55%
+        ),
+        linear-gradient(160deg, #240815, #090309 75%);
+
+    background-attachment: fixed;
+
+    color: #f8e6df;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+/* GOLDEN PARTICLES BACKGROUND */
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.particle {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+
+    background: #ffe1a5;
+    box-shadow:
+        0 0 6px 2px rgba(255, 208, 130, 0.6),
+        0 0 14px rgba(255, 190, 100, 0.35);
+
+    pointer-events: none;
+    will-change: transform, opacity;
+
+    animation: goldenRise linear infinite;
+}
+
+@keyframes goldenRise {
+    0% {
+        transform: translateY(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    75% {
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translateY(var(--rise-distance, -100vh));
+        opacity: 0;
+    }
+}
+
+/* MAIN CONTENT */
+
+.container {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 760px;
+    text-align: center;
+
+    animation: cinematicEntrance 1.5s ease both;
+}
+
+@keyframes cinematicEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+        filter: blur(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* TOP LABEL */
+
+.eyebrow {
+    color: #d9ad75;
+    letter-spacing: 4px;
+    font: 11px Arial, sans-serif;
+    margin-bottom: 22px;
+}
+
+/* TITLE */
+
+h1 {
+    font-size: clamp(35px, 7vw, 60px);
+    font-weight: normal;
+    color: #f5d5a1;
+    margin-bottom: 12px;
+
+    text-shadow:
+        0 0 12px rgba(232, 197, 139, 0.25),
+        0 0 35px rgba(232, 197, 139, 0.15);
+}
+
+/* GLOWING HEART */
+
+.heart {
+    display: inline-block;
+    font-size: 34px;
+    margin: 18px 0;
+    color: #ffb6c8;
+
+    filter: drop-shadow(0 0 12px rgba(255, 160, 190, 0.65));
+
+    animation: heartBeat 2s ease-in-out infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.13);
+    }
+}
+
+/* SUBTITLE */
+
+.subtitle {
+    color: #e8c8c4;
+    font-size: 16px;
+    font-style: italic;
+    margin-bottom: 32px;
+    line-height: 1.8;
+}
+
+/* LETTER CARD */
+
+.letter {
+    position: relative;
+    overflow: hidden;
+
+    background: rgba(255, 240, 230, 0.045);
+
+    border: 1px solid rgba(232, 197, 139, 0.5);
+    border-radius: 18px;
+
+    padding: clamp(24px, 5vw, 45px);
+
+    text-align: left;
+    line-height: 1.95;
+
+    box-shadow:
+        0 0 20px rgba(232, 197, 139, 0.07),
+        0 20px 60px rgba(0, 0, 0, 0.35),
+        inset 0 0 25px rgba(232, 197, 139, 0.035);
+}
+
+/* SLOW GOLDEN SHIMMER */
+
+.letter::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+
+    width: 45%;
+    height: 100%;
+
+    pointer-events: none;
+
+    background: linear-gradient(
+        110deg,
+        transparent,
+        rgba(255, 226, 183, 0.07),
+        transparent
+    );
+
+    animation: letterShimmer 8s ease-in-out infinite;
+}
+
+@keyframes letterShimmer {
+    0%, 65% {
+        left: -100%;
+    }
+
+    100% {
+        left: 150%;
+    }
+}
+
+/* LETTER TEXT */
+
+.letter p {
+    position: relative;
+    z-index: 1;
+
+    margin-bottom: 19px;
+    font-size: 16px;
+}
+
+.letter strong {
+    color: #f5d5a1;
+    font-weight: normal;
+
+    text-shadow: 0 0 12px rgba(232, 197, 139, 0.2);
+}
+
+/* CLOSING MESSAGE */
+
+.closing {
+    position: relative;
+    z-index: 1;
+
+    text-align: center;
+    margin-top: 25px;
+
+    color: #f2c7b9;
+    font-style: italic;
+    line-height: 1.9;
+}
+
+/* SIGNATURE */
+
+.signature {
+    position: relative;
+    z-index: 1;
+
+    color: #f5d5a1;
+    font-size: 23px;
+    text-align: right;
+    margin-top: 22px;
+}
+
+/* CONTINUE BUTTON */
+
+button {
+    position: relative;
+    z-index: 2;
+
+    margin-top: 32px;
+    padding: 14px 28px;
+
+    border: 1px solid #d9ad75;
+    border-radius: 30px;
+
+    background: rgba(217, 173, 117, 0.04);
+    color: #f5d5a1;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+button:hover {
+    background: #d9ad75;
+    color: #270b16;
+
+    box-shadow: 0 0 25px rgba(217, 173, 117, 0.35);
+
+    transform: translateY(-2px);
+}
+
+/* FOOTER */
+
+.footer {
+    color: #bfa1a7;
+    font: 11px Arial, sans-serif;
+    letter-spacing: 2px;
+    margin-top: 30px;
+    line-height: 1.8;
+}
+
+/* MOBILE DESIGN */
+
+@media (max-width: 480px) {
+    body {
+        padding: 28px 14px;
+    }
+
+    .eyebrow {
+        letter-spacing: 2px;
+        font-size: 10px;
+    }
+
+    h1 {
+        font-size: clamp(32px, 9vw, 43px);
+    }
+
+    .subtitle {
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+    .letter {
+        padding: 23px 19px;
+        border-radius: 15px;
+    }
+
+    .letter p {
+        font-size: 15px;
+        line-height: 1.9;
+    }
+
+    .signature {
+        font-size: 21px;
+    }
+
+    button {
+        max-width: 100%;
+        padding: 13px 22px;
+    }
+}
+
+/* REDUCE ANIMATION IF REQUESTED IN DEVICE SETTINGS */
+
+@media (prefers-reduced-motion: reduce) {
+    .container {
+        animation: none;
+    }
+
+    .heart,
+    .letter::after,
+    .particle {
+        animation: none;
+    }
+}
+</style>
+
+</head>
+
+<body>
+<audio id="backgroundMusic" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+  Your browser does not support audio playback.
+</audio>
+<div class="particles" id="particles" aria-hidden="true"></div>
+
+<main class="container">
+
+    <div class="eyebrow">A LITTLE PIECE OF MY HEART</div>
+
+    <h1>To My Dearest</h1>
+
+    <h1>Akka <span style="color:#d9ad75;">♡</span> Bava</h1>
+
+    <div class="heart">♥</div>
+
+    <p class="subtitle">
+        Some feelings are too precious to leave unspoken.
+    </p>
+
+    <section class="letter">
+
+        <p><strong>My dearest Akka and Bava, ❤️</strong></p>
+
+        <p>
+            Some people come into our lives and become so special
+            that words can never fully explain what they mean to us.
+            For me, you both are those people.
+        </p>
+
+        <p>
+            <strong>Akka,</strong> you are someone I can lean on
+            whenever life feels difficult. Your love, support, and
+            understanding give me comfort in ways I cannot explain.
+            You make me feel that I am never alone.
+        </p>
+
+        <p>
+            <strong>Bava,</strong> your care and concern mean so much
+            to me. The way you look out for me makes me feel protected
+            and loved. I will always cherish the little things you do
+            for me.
+        </p>
+
+        <p>
+            Together, you both have given me something truly precious.
+            In Akka, I find a mother's warmth, and in Bava, I find
+            a father's care.
+        </p>
+
+        <p>
+            <strong>You are not just my Akka and Bava.
+            You are my parents by heart. ❤️</strong>
+        </p>
+
+        <p>
+            No matter how much life changes, I hope you always know
+            that you have a little sister who loves you both more
+            than words can express.
+        </p>
+
+        <p>
+            On your second wedding anniversary, I wish you a lifetime
+            of laughter, understanding, beautiful memories, and a love
+            that grows stronger with every passing year.
+        </p>
+
+        <div class="closing">
+            You both will always have a place in my heart
+            that nobody else can replace. ❤️
+        </div>
+
+        <div class="signature">
+            Forever your Nandhu 💗
+        </div>
+
+    </section>
+
+    <button onclick="window.location.href='page5.html'">
+        Continue Their Story ♡
+    </button>
+
+    <div class="footer">
+        MADE WITH ALL MY LOVE · NANDHU
+    </div>
+
+</main>
+
+<script>
+const particleArea = document.getElementById("particles");
+
+function createGoldenParticles() {
+    if (!particleArea) return;
+
+    particleArea.innerHTML = "";
+
+    const pageHeight = Math.max(
+        document.documentElement.scrollHeight,
+        window.innerHeight
+    );
+
+    particleArea.style.height = pageHeight + "px";
+
+    const particleCount = window.innerWidth < 600 ? 18 : 28;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement("span");
+
+        particle.className = "particle";
+
+        particle.style.left = Math.random() * 100 + "%";
+
+        /* Begin near the bottom of the entire page */
+        particle.style.top = (pageHeight - 5) + "px";
+
+        particle.style.setProperty(
+            "--rise-distance",
+            "-" + pageHeight + "px"
+        );
+
+        particle.style.animationDuration =
+            (10 + Math.random() * 10) + "s";
+
+        particle.style.animationDelay =
+            "-" + (Math.random() * 18) + "s";
+
+        const size = (2 + Math.random() * 2) + "px";
+
+        particle.style.width = size;
+        particle.style.height = size;
+
+        particleArea.appendChild(particle);
+    }
+}
+
+createGoldenParticles();
+
+window.addEventListener("resize", () => {
+    createGoldenParticles();
+});
+</script>
+<script>
+const music = document.getElementById("backgroundMusic");
+const savedTime = Number(localStorage.getItem("musicTime") || 0);
+
+music.addEventListener("loadedmetadata", () => {
+  if (savedTime < music.duration) music.currentTime = savedTime;
+  music.play().catch(() => {
+    // Autoplay with sound may require the visitor to press Play.
+  });
+});
+
+music.addEventListener("timeupdate", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+</script>
+</body>
+</html>

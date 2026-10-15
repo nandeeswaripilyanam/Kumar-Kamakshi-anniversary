@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Our Love Quiz | Kumar & Kamakshi</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+       /* ===== CINEMATIC ANNIVERSARY QUIZ ===== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    padding: 30px 16px;
+    overflow-x: hidden;
+    color: #fff1e8;
+    font-family: 'Poppins', sans-serif;
+
+    background:
+        radial-gradient(ellipse at 50% 0%, #68283b 0%, transparent 48%),
+        radial-gradient(ellipse at 0% 60%, #351321 0%, transparent 45%),
+        linear-gradient(135deg, #0b060b, #210c18 50%, #0b060b);
+
+    background-attachment: fixed;
+    animation: backgroundReveal 1.8s ease both;
+}
+
+/* Soft golden light at the top */
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #e6bd8610 0,
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            #d58ba310 0,
+            transparent 30%
+        );
+}
+
+/* Main content entrance */
+
+.quiz-container {
+    position: relative;
+    width: 100%;
+    max-width: 720px;
+    margin: 30px auto;
+    text-align: center;
+
+    animation: cinematicEntrance 1.3s ease both;
+}
+
+/* Small elegant heading */
+
+.eyebrow {
+    color: #e6bd86;
+    font-size: 10px;
+    letter-spacing: 4px;
+    margin-bottom: 18px;
+    text-transform: uppercase;
+
+    animation: fadeUp 1s ease 0.2s both;
+}
+
+/* Main title */
+
+h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 8vw, 66px);
+    font-weight: 500;
+    line-height: 1.1;
+
+    background: linear-gradient(
+        120deg,
+        #fff1dc,
+        #e6bd86,
+        #f8d7e1,
+        #e6bd86
+    );
+
+    background-size: 250% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+
+    animation:
+        fadeUp 1s ease 0.35s both,
+        goldShimmer 7s linear infinite;
+}
+
+/* Intro text */
+
+.intro {
+    max-width: 510px;
+    margin: 18px auto 32px;
+    color: #d9bfc5;
+    font-size: 13px;
+    line-height: 2;
+
+    animation: fadeUp 1s ease 0.5s both;
+}
+
+/* Main glass-like quiz card */
+
+.quiz-card {
+    position: relative;
+    padding: 30px 24px;
+    text-align: left;
+
+    border: 1px solid #b98b6175;
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #3a1928e8,
+            #180c15f5
+        );
+
+    box-shadow:
+        0 20px 60px #00000065,
+        0 0 25px #d9aa7020,
+        0 0 50px #b77b6815,
+        inset 0 1px 0 #fff1e81a;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    animation: cardReveal 1.2s ease 0.45s both;
+}
+
+/* Fine gold line at the top of the card */
+
+.quiz-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #f8d9a7,
+        #fff1dc,
+        #f8d9a7,
+        transparent
+    );
+    background-size: 200% 100%;
+    animation: borderShimmer 5s linear infinite;
+}
+
+@keyframes borderShimmer {
+    from {
+        background-position: 100% 0;
+    }
+
+    to {
+        background-position: -100% 0;
+    }
+}
+    
+/* Individual questions */
+
+.question {
+    position: relative;
+    margin-bottom: 28px;
+    padding-bottom: 4px;
+
+    animation: fadeUp 0.8s ease both;
+}
+
+.question:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.question:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.question:nth-child(3) {
+    animation-delay: 0.7s;
+}
+
+.question:nth-child(4) {
+    animation-delay: 0.8s;
+}
+
+.question:nth-child(5) {
+    animation-delay: 0.9s;
+}
+
+.question:nth-child(6) {
+    animation-delay: 1s;
+}
+
+/* Question text */
+
+.question label {
+    display: block;
+    margin-bottom: 12px;
+
+    color: #f5d9c4;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    font-weight: 600;
+    line-height: 1.4;
+
+    transition: color 0.3s ease;
+}
+
+.question:focus-within label {
+    color: #ffe3ad;
+}
+
+/* Answer fields */
+
+.question input,
+.question select,
+.question textarea {
+    width: 100%;
+    padding: 13px 14px;
+
+    border: 1px solid #79515c;
+    border-radius: 10px;
+    outline: none;
+
+    background: #160c13;
+    color: #fff1e8;
+
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+
+    transition:
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+.question input::placeholder,
+.question textarea::placeholder {
+    color: #a88c99;
+}
+
+.question input:focus,
+.question select:focus,
+.question textarea:focus {
+    border-color: #e6bd86;
+
+    background: #20101b;
+
+    box-shadow:
+        0 0 0 3px #e6bd8610,
+        0 0 20px #e6bd8620;
+}
+
+.question textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+/* Small hints */
+
+.hint {
+    margin-top: 7px;
+    color: #c6aeb7;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* Glowing submit button */
+
+.submit-button {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 15px;
+
+    overflow: hidden;
+
+    border: 1px solid #f1d2a2;
+    border-radius: 40px;
+
+    background: linear-gradient(
+        120deg,
+        #f1d2a2,
+        #c58d7d,
+        #e6bd86
+    );
+
+    background-size: 200% auto;
+
+    color: #210e18;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+
+    cursor: pointer;
+
+    box-shadow: 0 5px 20px #e6bd8615;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        background-position 0.5s ease;
+}
+
+.submit-button:hover {
+    transform: translateY(-3px);
+
+    background-position: right center;
+
+    box-shadow:
+        0 0 15px #e6bd8640,
+        0 0 35px #e6bd8625;
+}
+
+.submit-button:active {
+    transform: scale(0.98);
+}
+
+/* Footer */
+
+.footer-note {
+    margin-top: 25px;
+    color: #c6aeb7;
+    font-size: 11px;
+    line-height: 1.9;
+
+    animation: fadeUp 1s ease 1s both;
+}
+
+/* Decorative heart */
+
+.heart {
+    margin-top: 22px;
+
+    color: #e9b8a9;
+    font-size: 32px;
+
+    text-shadow:
+        0 0 10px #e9b8a950,
+        0 0 25px #e9b8a925;
+
+    animation: heartGlow 2.5s ease-in-out infinite;
+}
+
+/* ===== CINEMATIC ANIMATIONS ===== */
+
+@keyframes cinematicEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(22px);
+        filter: blur(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes cardReveal {
+    from {
+        opacity: 0;
+        transform: translateY(28px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes backgroundReveal {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes goldShimmer {
+    0% {
+        background-position: 0% center;
+    }
+
+    100% {
+        background-position: 250% center;
+    }
+}
+
+@keyframes heartGlow {
+    0%, 100% {
+        transform: scale(1);
+        text-shadow: 0 0 10px #e9b8a940;
+    }
+
+    50% {
+        transform: scale(1.07);
+        text-shadow:
+            0 0 18px #e9b8a980,
+            0 0 32px #e9b8a930;
+    }
+}
+
+/* Mobile-friendly layout */
+
+@media (max-width: 480px) {
+    body {
+        padding: 20px 12px;
+    }
+
+    .quiz-container {
+        margin: 20px auto;
+    }
+
+    .quiz-card {
+        padding: 24px 17px;
+        border-radius: 15px;
+    }
+
+    .question label {
+        font-size: 23px;
+    }
+
+    .eyebrow {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+/* Floating cinematic golden sparkles */
+
+.cinematic-sparkles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.cinematic-sparkles span {
+    position: absolute;
+    bottom: -30px;
+    left: calc(var(--i, 1) * 8%);
+    color: #f3d39b;
+    font-size: 17px;
+    opacity: 0;
+    text-shadow: 0 0 12px #e6bd86;
+    animation: sparkleFloat 9s linear infinite;
+}
+
+.cinematic-sparkles span:nth-child(1)  { left: 8%;  animation-delay: 0s; }
+.cinematic-sparkles span:nth-child(2)  { left: 20%; animation-delay: 2s; }
+.cinematic-sparkles span:nth-child(3)  { left: 30%; animation-delay: 4s; }
+.cinematic-sparkles span:nth-child(4)  { left: 42%; animation-delay: 1s; }
+.cinematic-sparkles span:nth-child(5)  { left: 52%; animation-delay: 5s; }
+.cinematic-sparkles span:nth-child(6)  { left: 62%; animation-delay: 3s; }
+.cinematic-sparkles span:nth-child(7)  { left: 72%; animation-delay: 6s; }
+.cinematic-sparkles span:nth-child(8)  { left: 82%; animation-delay: 2.5s; }
+.cinematic-sparkles span:nth-child(9)  { left: 92%; animation-delay: 4.5s; }
+.cinematic-sparkles span:nth-child(10) { left: 15%; animation-delay: 7s; }
+.cinematic-sparkles span:nth-child(11) { left: 68%; animation-delay: 1.5s; }
+.cinematic-sparkles span:nth-child(12) { left: 36%; animation-delay: 6.5s; }
+
+@keyframes sparkleFloat {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.8;
+    }
+
+    80% {
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+.quiz-container {
+    z-index: 1;
+}
+/* Continue button — hidden until quiz submission succeeds */
+
+#continueButton {
+    display: none;
+    position: relative;
+    width: fit-content;
+    margin: 30px auto 10px;
+    padding: 14px 35px;
+
+    border: 1px solid #e6bd86;
+    border-radius: 40px;
+
+    background: linear-gradient(
+        120deg,
+        #f1d2a2,
+        #c58d7d,
+        #e6bd86
+    );
+
+    color: #210e18;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-decoration: none;
+
+    box-shadow: 0 0 20px #e6bd8630;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#continueButton.visible {
+    display: block;
+    animation: fadeUp 0.8s ease both;
+}
+
+#continueButton:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 28px #e6bd8660;
+}
+
+    </style>
+    
+
+</head>
+
+<body>
+    <audio id="backgroundMusic" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+  Your browser does not support audio playback.
+</audio>
+    <div class="cinematic-sparkles" aria-hidden="true">
+    <span>✦</span>
+    <span>✧</span>
+    <span>·</span>
+    <span>✦</span>
+    <span>✧</span>
+    <span>·</span>
+    <span>✦</span>
+    <span>✧</span>
+    <span>·</span>
+    <span>✦</span>
+    <span>✧</span>
+    <span>·</span>
+</div>
+
+    <main class="quiz-container">
+
+        <p class="eyebrow">A LITTLE GAME FOR TWO HEARTS</p>
+
+        <h1>How Well Do You<br>Know Your Love? ♡</h1>
+
+        <p class="intro">
+            Every love story has its own little secrets,
+            unforgettable moments, and beautiful memories.
+            Let's see how well you remember yours! ❤️
+        </p>
+
+        <form class="quiz-card" id="loveQuiz">
+
+            <div class="question">
+                <label for="respondent">1. Who is answering the quiz?</label>
+
+                <select id="respondent" name="respondent" required>
+                    <option value="">Choose one</option>
+                    <option value="Kumar">Kumar (Bava)</option>
+                    <option value="Kamakshi">Kamakshi (Akka)</option>
+                    <option value="Both">Both together</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label for="meeting">2. Where did your beautiful story begin?</label>
+
+                <input
+                    id="meeting"
+                    name="meeting"
+                    type="text"
+                    placeholder="Your answer..."
+                    required
+                >
+                <p class="hint">Hint: Think about the place where you first met. 💗</p>
+            </div>
+
+            <div class="question">
+                <label for="firstImpression">3. What was your first impression of each other?</label>
+
+                <textarea
+                    id="firstImpression"
+                    name="firstImpression"
+                    placeholder="Tell us your memory..."
+                    required
+                ></textarea>
+            </div>
+
+            <div class="question">
+                <label for="proposal">4. Who expressed their feelings first?</label>
+
+                <select id="proposal" name="proposal" required>
+                    <option value="">Choose an answer</option>
+                    <option value="Kumar">Kumar</option>
+                    <option value="Kamakshi">Kamakshi</option>
+                    <option value="Both">Both, together</option>
+                    <option value="Secret">That's a secret!</option>
+                </select>
+            </div>
+
+            <div class="question">
+                <label for="memory">5. Which memory always makes you smile?</label>
+
+                <textarea
+                    id="memory"
+                    name="memory"
+                    placeholder="Share one favourite memory..."
+                    required
+                ></textarea>
+            </div>
+
+            <div class="question">
+                <label for="message">6. What would you like to promise each other forever?</label>
+
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your heartfelt promise..."
+                    required
+                ></textarea>
+            </div>
+
+            <button class="submit-button" type="submit">
+                Send Our Answers With Love ♡
+            </button>
+
+        </form>
+
+        <p class="footer-note">
+            Made with love for my dearest Akka &amp; Bava.<br>
+            Always remember — you both are my parents by heart. ❤️
+        </p>
+
+        <div class="heart">♡</div>
+        <a href="page7.html" id="continueButton">
+    Continue ♡ →
+</a>
+
+    </main>
+
+    <!-- EmailJS Library -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+    // Initialize EmailJS
+    emailjs.init({
+        publicKey: "qnxxD9Hp9BqC9Z8sc"
+    });
+
+    // Connect the Love Quiz form
+    document.getElementById("loveQuiz").addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        const form = this;
+        const submitButton = form.querySelector(".submit-button");
+        const originalText = submitButton.textContent;
+
+        submitButton.disabled = true;
+        submitButton.textContent = "Sending Your Answers... 💌";
+
+        try {
+            await emailjs.sendForm(
+                "service_xo9s911",
+                "template_7l5bu7v",
+                form
+            );
+
+            alert(
+                "Your answers have been sent successfully! ❤️💌\n\n" +
+                "Thank you for sharing your beautiful love story."
+            );
+
+            document.getElementById("continueButton").classList.add("visible");
+            form.reset();
+
+        } catch (error) {
+            console.error("EmailJS error:", error);
+
+            alert(
+                "Your answers could not be sent right now. ❤️\n\n" +
+                "Please check your internet connection and try again."
+            );
+
+        } finally {
+            submitButton.disabled = false;
+            submitButton.textContent = originalText;
+        }
+    });
+</script>
+<script>
+const music = document.getElementById("backgroundMusic");
+const savedTime = Number(localStorage.getItem("musicTime") || 0);
+
+music.addEventListener("loadedmetadata", () => {
+  if (savedTime < music.duration) music.currentTime = savedTime;
+  music.play().catch(() => {
+    // Autoplay with sound may require the visitor to press Play.
+  });
+});
+
+music.addEventListener("timeupdate", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+</script>
+</body>
+</html>

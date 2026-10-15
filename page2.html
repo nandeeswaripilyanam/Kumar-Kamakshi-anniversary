@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kumar & Kamakshi | Their Love Story</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      color: #fff0e9;
+      font-family: Georgia, "Times New Roman", serif;
+      background:
+        radial-gradient(ellipse at 20% 25%, #681827 0%, transparent 45%),
+        radial-gradient(ellipse at 85% 75%, #47101c 0%, transparent 45%),
+        linear-gradient(135deg, #100206, #30050e, #100206);
+      overflow-x: hidden;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 90px 24px 70px;
+      position: relative;
+      isolation: isolate;
+    }
+
+    #stars {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .label {
+      color: #ffd58a;
+      font-size: 11px;
+      letter-spacing: 4px;
+      margin-bottom: 28px;
+      animation: fadeIn 1.5s ease both;
+    }
+
+    .ornament {
+      color: #ffd58a;
+      font-size: 30px;
+      margin-bottom: 20px;
+      text-shadow: 0 0 18px #ffb84d;
+      animation: glow 3s ease-in-out infinite;
+    }
+
+    h1 {
+      max-width: 900px;
+      color: #f6c0c8;
+      font-size: clamp(35px, 6vw, 68px);
+      font-weight: normal;
+      line-height: 1.2;
+      animation: fadeIn 1.8s ease both;
+    }
+
+    .intro {
+      max-width: 680px;
+      margin-top: 30px;
+      color: #fff0e9;
+      font-size: clamp(17px, 2.5vw, 22px);
+      line-height: 1.9;
+      animation: fadeIn 2.3s ease both;
+    }
+
+    .divider {
+      width: min(260px, 70%);
+      height: 1px;
+      margin: 30px auto;
+      background: linear-gradient(
+        90deg, transparent, #ffd58a, transparent
+      );
+    }
+
+    .story {
+      max-width: 720px;
+      color: #e9bdbe;
+      font-size: clamp(16px, 2vw, 19px);
+      line-height: 2;
+      animation: fadeIn 2.8s ease both;
+    }
+
+    .closing {
+      max-width: 720px;
+      margin-top: 28px;
+      color: #ffd58a;
+      font-size: clamp(20px, 3vw, 27px);
+      font-style: italic;
+      line-height: 1.7;
+      text-shadow: 0 0 16px #ffba4630;
+      animation: fadeIn 3.2s ease both;
+    }
+
+    .continue {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 15px 26px;
+      border: 1px solid #e8b75f;
+      border-radius: 3px;
+      color: #ffe5af;
+      background: linear-gradient(110deg, #4a160e, #21060a, #4a160e);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 1px;
+      box-shadow: 0 0 18px #c77b2730;
+      transition: 0.3s ease;
+    }
+
+    .continue:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 28px #ffc56870;
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 22px;
+      color: #bd8790;
+      font-size: 10px;
+      letter-spacing: 3px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glow {
+      0%, 100% {
+        text-shadow: 0 0 8px #ffb84d;
+      }
+      50% {
+        text-shadow: 0 0 25px #ffca72;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .page {
+        padding: 85px 22px 65px;
+      }
+
+      .label {
+        font-size: 9px;
+        letter-spacing: 2px;
+      }
+
+      .intro {
+        margin-top: 22px;
+      }
+
+      .story {
+        line-height: 1.8;
+      }
+
+      .footer {
+        font-size: 8px;
+        letter-spacing: 2px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
+  
+</head>
+
+<body>
+  <audio id="backgroundMusic" autoplay loop>
+  <source src="music.mp3" type="audio/mpeg">
+  Your browser does not support audio playback.
+</audio>
+  <main class="page">
+    <canvas id="stars"></canvas>
+
+    <p class="label">CHAPTER ONE • THE BEGINNING</p>
+
+    <div class="ornament" aria-hidden="true">♡</div>
+
+    <h1>Every Great Love Story<br>Begins Somewhere…</h1>
+
+    <p class="intro">
+      Some stories are written in books.<br>
+      The most beautiful ones are written by two hearts.
+    </p>
+
+    <div class="divider"></div>
+
+    <p class="story">
+      Somewhere in their school days, a beautiful chapter began.
+      What may have seemed like an ordinary moment became the
+      beginning of a story that would hold a special place in
+      their hearts. With time, memories, and togetherness,
+      their journey became something truly precious.
+    </p>
+
+    <p class="closing">
+      “And somehow, two hearts found a reason<br>
+      to become one forever.” ♡
+    </p>
+
+    <a class="continue" href="page3.html">
+      Continue Their Story →
+    </a>
+
+    <footer class="footer">
+      KUMAR ♡ KAMAKSHI • FOREVER & ALWAYS
+    </footer>
+  </main>
+
+  <script>
+    const canvas = document.getElementById("stars");
+    const ctx = canvas.getContext("2d");
+    let particles = [];
+
+    function resize() {
+      const page = document.querySelector(".page");
+      canvas.width = page.clientWidth;
+      canvas.height = page.scrollHeight;
+
+      const count = Math.min(
+        100,
+        Math.floor(canvas.width * canvas.height / 7000)
+      );
+
+      particles = Array.from({ length: count }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.6 + 0.4,
+        speed: Math.random() * 0.3 + 0.08,
+        phase: Math.random() * Math.PI * 2,
+        alpha: Math.random() * 0.6 + 0.2
+      }));
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach(p => {
+        p.phase += 0.025;
+        p.y -= p.speed;
+
+        if (p.y < 0) {
+          p.y = canvas.height;
+          p.x = Math.random() * canvas.width;
+        }
+
+        const opacity =
+          p.alpha * (0.65 + Math.sin(p.phase) * 0.35);
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255, 190, 83, ${opacity})`;
+        ctx.fill();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("resize", resize);
+    resize();
+    animate();
+  </script>
+  <script>
+const music = document.getElementById("backgroundMusic");
+const savedTime = Number(localStorage.getItem("musicTime") || 0);
+
+music.addEventListener("loadedmetadata", () => {
+  if (savedTime < music.duration) music.currentTime = savedTime;
+  music.play().catch(() => {
+    // Autoplay with sound may require the visitor to press Play.
+  });
+});
+
+music.addEventListener("timeupdate", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+
+window.addEventListener("beforeunload", () => {
+  localStorage.setItem("musicTime", music.currentTime);
+});
+</script>
+</body>
+</html>
